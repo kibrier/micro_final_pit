@@ -31,7 +31,6 @@ for i in range(len(class_list)):
 # load the trained YOLOv8n model
 model = YOLO("best.pt")
 
-# cap = cv2.VideoCapture(1)
 cap = cv2.VideoCapture(1)
 
 if not cap.isOpened():
