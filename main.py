@@ -24,7 +24,7 @@ def map(x, in_min, in_max, out_min, out_max):
 def degrees(angle, minm, maxm):
     return map(angle, 0, 180, minm, maxm)
 
-def servo1_test():
+def bio_servo():
     led.off()
     minm, maxm, = 42, 140
     pwm1.duty(degrees(0, minm, maxm))
@@ -33,7 +33,7 @@ def servo1_test():
     patch_data('bio')
     led.on()
     
-def servo2_test():
+def nonbio_servo():
     led.off()
     minm, maxm = 20, 123
     pwm2.duty(degrees(0, minm, maxm))
@@ -42,7 +42,7 @@ def servo2_test():
     patch_data('nonbio')
     led.on()
 
-def servo3_test():
+def recyc_servo():
     led.off()
     minm, maxm = 24, 125
     pwm3.duty(degrees(0, minm, maxm))
@@ -56,13 +56,13 @@ while True:
         data = uart.read(1).decode('utf-8')
         
         if data == 'b': #BIO
-            servo1_test()
-            print('junk >>', uart.read())
+            bio_servo()
+            uart.read() # to clear bytes in buffer
         elif data == 'n': #NONBIO
-            servo2_test()
-            print('junk >>', uart.read())
+            nonbio_servo()
+            uart.read()
         elif data == 'r': #RECYCLABLE
-            servo3_test()
-            print('junk >>', uart.read())
+            recyc_servo()
+            uart.read()
         else:
             pass
