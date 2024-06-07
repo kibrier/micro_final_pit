@@ -16,7 +16,7 @@ class_list = data.split("\n")
 my_file.close()
 
 # for waste classification
-bio = [1, 6]
+bio = [1, 6] # these numbers correspond to to indexes based on coco1.txt
 nonbio = [0, 3, 4]
 recyc = [2, 5, 7, 8, 9, 10]
 
